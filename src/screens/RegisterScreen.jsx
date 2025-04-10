@@ -7,7 +7,7 @@ function RegisterScreen({ onRegister }) {
 
   const register = async () => {
     try {
-      const res = await fetch('http://18.116.19.232/usuarios', {
+      const res = await fetch('https://18.116.19.232/usuarios', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
