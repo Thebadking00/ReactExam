@@ -6,7 +6,7 @@ function LoginScreen({ onLogin, onRegisterPress }) {
 
   const login = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:5000/usuarios');
+      const res = await fetch('http://18.116.19.232/usuarios');
       const users = await res.json();
       const found = users.find(u => u.email === email && u.password === password);
       if (found) {

@@ -14,7 +14,8 @@ function HomeScreen() {
 
   return (
     <div style={{ padding: 20 }}>
-      <UserForm selectedUser={editingUser} onFinish={handleFinish} />
+     <UserForm selectedUser={editingUser} onUserSaved={handleFinish} />
+
       <UserList key={refreshKey} onEdit={handleEdit} />
     </div>
   );

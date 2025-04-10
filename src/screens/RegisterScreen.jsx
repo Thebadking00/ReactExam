@@ -7,21 +7,24 @@ function RegisterScreen({ onRegister }) {
 
   const register = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:5000/usuarios', {
+      const res = await fetch('http://18.116.19.232/usuarios', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
       });
+      const data = await res.json(); // Intenta leer la respuesta del servidor
       if (res.ok) {
         alert('Registro exitoso');
         onRegister();
       } else {
-        alert('Error al registrar');
+        alert(`Error al registrar: ${data.message || 'Problema desconocido'}`);
       }
     } catch (err) {
+      console.error('Error de conexión:', err);
       alert('Error de conexión');
     }
   };
+  
 
   return (
     <div>
