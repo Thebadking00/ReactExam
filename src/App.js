@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [screen, setScreen] = useState('login'); // login, register, home
+
+  const handleLogin = () => setScreen('home');
+  const handleGoToRegister = () => setScreen('register');
+  const handleGoToLogin = () => setScreen('login');
+
+  if (screen === 'register') {
+    return <RegisterScreen onRegister={handleGoToLogin} />;
+  }
+
+  if (screen === 'login') {
+    return <LoginScreen onLogin={handleLogin} onRegisterPress={handleGoToRegister} />;
+  }
+
+  return <HomeScreen />;
 }
 
 export default App;
